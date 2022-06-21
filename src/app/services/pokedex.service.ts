@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from './Pokemon';
+import {notFoundPokemon, Pokemon} from '../models/Pokemon';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -12,17 +12,24 @@ export class PokedexService {
 
 	constructor(private storage: LocalStorageService<Pokemon>) { }
 
-	initialise(): void {
+	public initialise(): void {
 		this.available = this.storage.getArray('available');
 		this.pokedex = this.storage.getArray('pokedex');
 	}
 
-	public getPokemonByName(name: string) {
-		return this.available.find((pokemon: Pokemon) => pokemon.name == name);
+	public getPokemonByName(name: string): Pokemon {
+		const pokemonExists = this.available.find((pokemon: Pokemon) => pokemon.name === name);
+		if(pokemonExists){
+			return pokemonExists
+		}else{
+			const notFound: Pokemon = notFoundPokemon;
+			notFound.name = `No result for "${name}"`;
+			return notFound;
+		}
 	}
 
-	public addAvailable(pokemon: Pokemon) {
-		let isPokemonInPokedex = this.available.find((current: Pokemon) => current.id == pokemon.id);
+	public addAvailable(pokemon: Pokemon): void {
+		let isPokemonInPokedex = this.available.find((current: Pokemon) => current.id === pokemon.id);
 		if (isPokemonInPokedex === undefined) {
 			this.available.push(pokemon);
 			this.storage.saveArray('available', this.available);
@@ -51,8 +58,8 @@ export class PokedexService {
 		return this.pokedex.length;
 	}
 
-	public setInPokedex(pokemon: Pokemon, state: boolean) {
-		let pokemonInAvailableList = this.available.find((current: Pokemon) => current.id == pokemon.id);
+	public setInPokedex(pokemon: Pokemon, state: boolean): void {
+		let pokemonInAvailableList = this.available.find((current: Pokemon) => current.id === pokemon.id);
 		if (pokemonInAvailableList) {
 			pokemonInAvailableList.is_in_pokedex = state;
 		}

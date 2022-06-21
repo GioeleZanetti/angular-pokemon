@@ -1,8 +1,12 @@
-$img-size: 350px !default;
+$img-size: 50px !default;
+$big-font-size: 25px !default;
+$default-border-radius: 5px !default;
+$pokedex-max-height: 400px !default;
+$default-background: #fff !default;
+$default-padding: 10px !default;
 
 .pokeball-container {
 
-	position: relative;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -11,14 +15,6 @@ $img-size: 350px !default;
 	img {
 		height: $img-size;
 		width: $img-size;
-	}
-
-	p {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -125%);
-		font-size: 25px;
 	}
 
 }
@@ -31,15 +27,15 @@ $img-size: 350px !default;
 	left: 25%;
 	z-index: 1;
 	align-items: center;
-	border-radius: 5px;
-	background-color: #fff;
+	border-radius: $default-border-radius;
+	background-color: $default-background;
 	overflow-y: scroll;
-	max-height: 400px;
+	max-height: $pokedex-max-height;
 	border: 1px solid black;
 
 	.close{
 		display: flex;
 		justify-content: center;
-		padding-bottom: 10px;
+		padding-bottom: $default-padding;
 	}
 }

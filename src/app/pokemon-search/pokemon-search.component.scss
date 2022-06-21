@@ -1,12 +1,13 @@
 $img-size: 20px !default;
 $default-space: 2px !default;
+$default-margin: 10px;
 
 .search-component {
 	display: flex;
 	align-items: center;
 
 	button {
-		margin-left: 10px;
+		margin-left: $default-margin;
 
 		img {
 			width: $img-size;

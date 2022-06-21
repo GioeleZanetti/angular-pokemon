@@ -1,7 +1,8 @@
-import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
-import { PokedexService } from '../pokedex.service';
-import { Pokemon } from '../Pokemon';
+import { PokedexService } from '../services/pokedex.service';
+import { Pokemon } from '../models/Pokemon';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
 	selector: 'app-pokedex',
@@ -14,8 +15,8 @@ export class PokedexComponent implements OnInit {
 	public pokemons: Pokemon[] = [];
 
 	constructor(
-		private rederer: Renderer2,
-		private pokedex: PokedexService
+		private pokedex: PokedexService,
+		public dialogRef: MatDialogRef<PokedexComponent>
 	) { }
 
 	public ngOnInit(): void {
@@ -27,11 +28,15 @@ export class PokedexComponent implements OnInit {
 		this.pokemons = this.pokedex.getPokedex();
 	}
 
-	public showDetailWindow(pokemon: Pokemon) {
-		let p = document.getElementById(pokemon.name + "Details");
-		if (p) {
-			p.style.display = 'flex';
+	public showDetailWindow(pokemon: Pokemon): void {
+		const pokemonDetails = document.getElementById(pokemon.name + "Details");
+		if (pokemonDetails) {
+			pokemonDetails.style.display = 'flex';
 		}
+	}
+
+	public close(): void {
+		this.dialogRef.close();
 	}
 
 }

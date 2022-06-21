@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PokedexService } from './pokedex.service';
+import { PokedexService } from './services/pokedex.service';
 
 @Component({
 	selector: 'app-root',

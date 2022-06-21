@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Pokemon } from '../Pokemon';
-import { PokedexService } from '../pokedex.service';
+import { Pokemon } from '../models/Pokemon';
+import { PokedexService } from '../services/pokedex.service';
 
 @Component({
 	selector: 'app-pokemon-details',
@@ -33,7 +33,7 @@ export class PokemonDetailsComponent implements OnInit {
 		this.router.navigate([`pokemon/${this.pokemon?.name}`]);
 	}
 
-	public addToPokedex() {
+	public addToPokedex(): void {
 		if (this.pokemon) {
 			this.pokedex.addToPokedex(this.pokemon);
 			this.pokemon.is_in_pokedex = true;

@@ -20,3 +20,20 @@ interface Other {
 interface Artwork {
 	front_default: string;
 }
+
+export const notFoundPokemon: Pokemon = {
+	id: -1,
+	name: "",
+	base_experience: 0,
+	height: 0,
+	sprites: {
+		front_default: 'none',
+		other: {
+			"official-artwork": {
+				front_default: 'none'
+			}
+		}
+	},
+	weight: 0,
+	is_in_pokedex: false
+};

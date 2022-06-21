@@ -2,9 +2,10 @@ $default-space: 20px !default;
 $default-color: #03a1fc !default;
 $default-search-bar-color: #0377fc !default;
 $default-font-size: 20px !default;
+$default-header-height: 75px !default;
 
 .header {
-	height: 75px;
+	height: $default-header-height;
 	background-color: $default-color;
 	display: flex;
 	justify-content: space-between;

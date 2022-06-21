@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PokemonApiService } from '../pokemon-api.service';
-import { Pokemon } from '../Pokemon';
-import { PokedexService } from '../pokedex.service';
+import { PokemonApiService } from '../services/pokemon-api.service';
+import { Pokemon } from '../models/Pokemon';
+import { PokedexService } from '../services/pokedex.service';
 
 @Component({
 	selector: 'app-search-result',
@@ -25,12 +25,12 @@ export class SearchResultComponent implements OnInit {
 	}
 
 	public getPokemonIfExists(): void {
-		let name = String(this.route.snapshot.paramMap.get('name'));
+		const name = String(this.route.snapshot.paramMap.get('name'));
 		this.pokemonApi.getPokemonByName(name)
 			.subscribe(pokemon => this.setPokemon(pokemon));
 	}
 
-	public setPokemon(pokemon: Pokemon) {
+	public setPokemon(pokemon: Pokemon): void {
 		this.pokemon = pokemon;
 		if(pokemon.id !== -1){
 			this.pokedex.addAvailable(pokemon);
