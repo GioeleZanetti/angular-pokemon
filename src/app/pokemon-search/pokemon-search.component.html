@@ -1,0 +1,6 @@
+<div id="search-component" class="search-component">
+	<input id="search-box" #pokemonName autocomplete="off">
+	<button type="button" (click)="redirectIfNotEmpty(pokemonName.value)">
+		<img src="assets/search.png">
+	</button>
+</div>

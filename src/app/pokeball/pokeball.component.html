@@ -1,0 +1,12 @@
+<div class="pokeball-container">
+	<img src="assets/pokeball.png" (click)="openPokedex()">
+	<p>{{getPokedexSize()}}</p>
+</div>
+<div class="pokedex-container" #pokedexContainer>
+	<app-pokedex></app-pokedex>
+	<div class="close">
+		<button (click)="close()">
+			Close
+		</button>
+	</div>
+</div>

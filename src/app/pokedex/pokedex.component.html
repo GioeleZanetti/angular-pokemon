@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngFor="let pokemon of pokemons">
+    <div class="pokemon-list-item">
+      <p>{{pokemon.name}}</p>
+      <img src="{{pokemon.sprites.front_default}}" (click)="showDetailWindow(pokemon)">
+      <img src="assets/freile.png" class="icon" (click)="releaseFromPokedex(pokemon)">
+    </div>
+    <div class="pokemon-details" id="{{pokemon.name}}Details">
+      <p>Id: {{pokemon.id}}</p>
+      <p>Height: {{pokemon.height}}</p>
+      <p>Weigth: {{pokemon.weight}}</p>
+      <p>Base experience: {{pokemon.base_experience}}</p>
+    </div>
+  </div>
+</div>

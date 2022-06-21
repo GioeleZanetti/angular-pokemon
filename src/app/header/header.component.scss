@@ -1,0 +1,16 @@
+$default-space: 20px !default;
+$default-color: #03a1fc !default;
+$default-search-bar-color: #0377fc !default;
+$default-font-size: 20px !default;
+
+.header {
+	height: 75px;
+	background-color: $default-color;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	* {
+		padding: $default-space;
+	}
+}

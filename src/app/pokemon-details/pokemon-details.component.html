@@ -1,0 +1,36 @@
+<div *ngIf="pokemon">
+	<div class="table">
+		<div class="first-column">
+			<h1>Details for {{pokemon.name}}</h1>
+			<p>Id: {{pokemon.id}}</p>
+			<p>Height: {{pokemon.height}}</p>
+			<p>Weigth: {{pokemon.weight}}</p>
+			<p>Base experience: {{pokemon.base_experience}}</p>
+			<p><img src="{{pokemon.sprites.front_default}}"></p>
+			<p>
+				<button (click)="back()">
+					Go Back
+				</button>
+			</p>
+			<div>
+				<div *ngIf="pokemon.is_in_pokedex; else elseblock">
+					<p>
+						<button disabled>
+							Add To Pokedex
+						</button>
+					</p>
+				</div>
+				<ng-template #elseblock>
+					<p>
+						<button (click)="addToPokedex()">
+							Add To Pokedex
+						</button>
+					</p>
+				</ng-template>
+			</div>
+		</div>
+		<div class="second-column">
+			<app-pokeball></app-pokeball>
+		</div>
+	</div>
+</div>

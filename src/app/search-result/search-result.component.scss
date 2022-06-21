@@ -1,0 +1,38 @@
+$img-size: 400px !default;
+
+.table {
+	width: 100%;
+	display: grid;
+	grid-template: 1fr / 1fr 1fr;
+
+	.first-column {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		flex-flow: column wrap;
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.second-column {
+		display: flex;
+		align-items: center;
+		flex-flow: column wrap;
+		grid-column: 2;
+		grid-row: 1;
+	}
+}
+
+img {
+	width: $img-size;
+	height: $img-size;
+}
+
+.error {
+	margin-top: 100px;
+	background-color: rgba(255, 0, 0, .35);
+	display: flex;
+	justify-content: center;
+	height: 100px;
+	align-items: center;
+}

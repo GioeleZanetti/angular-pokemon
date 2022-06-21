@@ -1,0 +1,17 @@
+$img-size: 20px !default;
+$default-space: 2px !default;
+
+.search-component {
+	display: flex;
+	align-items: center;
+
+	button {
+		margin-left: 10px;
+
+		img {
+			width: $img-size;
+			height: $img-size;
+			padding: $default-space;
+		}
+	}
+}
