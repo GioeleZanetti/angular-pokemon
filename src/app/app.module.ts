@@ -12,6 +12,8 @@ import { PokedexComponent } from './pokedex/pokedex.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
 	declarations: [
@@ -27,11 +29,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-  		BrowserAnimationsModule,
-		MatDialogModule
+		BrowserAnimationsModule,
+		MatDialogModule,
+		MatButtonModule,
+		MatIconModule
 	],
 	providers: [],
-	bootstrap: [AppComponent],
-	entryComponents: [PokedexComponent]
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,26 +1,28 @@
 <div *ngIf="pokemon" class="container">
-	<h1>Details for {{pokemon.name}}</h1>
-	<p>Id: {{pokemon.id}}</p>
-	<p>Height: {{pokemon.height}}</p>
-	<p>Weigth: {{pokemon.weight}}</p>
-	<p>Base experience: {{pokemon.base_experience}}</p>
+	<div class="content">
+		<h1>Details for {{pokemon.name}}</h1>
+		<p>Id: {{pokemon.id}}</p>
+		<p>Height: {{pokemon.height}}</p>
+		<p>Weigth: {{pokemon.weight}}</p>
+		<p>Base experience: {{pokemon.base_experience}}</p>
+	</div>
 	<p><img src="{{pokemon.sprites.front_default}}"></p>
 	<p>
-		<button (click)="back()">
+		<button (click)="back()" mat-stroked-button>
 			Go Back
 		</button>
 	</p>
 	<div>
 		<div *ngIf="pokemon.is_in_pokedex; else elseblock">
 			<p>
-				<button disabled>
+				<button mat-raised-button color="primary" disabled>
 					Add To Pokedex
 				</button>
 			</p>
 		</div>
 		<ng-template #elseblock>
 			<p>
-				<button (click)="addToPokedex()">
+				<button mat-raised-button color="primary" (click)="addToPokedex()">
 					Add To Pokedex
 				</button>
 			</p>

@@ -1,15 +1,9 @@
-$img-size: 50px !default;
-$big-font-size: 25px !default;
-$default-border-radius: 5px !default;
-$pokedex-max-height: 400px !default;
-$default-background: #fff !default;
-$default-padding: 10px !default;
+$img-size: 40px !default;
 
 .pokeball-container {
 
 	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	cursor: pointer;
 
 	img {
@@ -17,25 +11,4 @@ $default-padding: 10px !default;
 		width: $img-size;
 	}
 
-}
-
-.pokedex-container {
-	width: 50%;
-	display: none;
-	position: absolute;
-	top: 25%;
-	left: 25%;
-	z-index: 1;
-	align-items: center;
-	border-radius: $default-border-radius;
-	background-color: $default-background;
-	overflow-y: scroll;
-	max-height: $pokedex-max-height;
-	border: 1px solid black;
-
-	.close{
-		display: flex;
-		justify-content: center;
-		padding-bottom: $default-padding;
-	}
 }

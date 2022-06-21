@@ -2,17 +2,13 @@ $icon-size: 50px !default;
 
 * {
 	box-sizing: border-box;
+	padding: 10px;
 }
 
-.container {
-	img {
-		cursor: pointer;
-	}
-
-	* {
-		padding: 10px;
-	}
+img {
+	cursor: pointer;
 }
+
 
 .pokemon-list-item {
 	width: 100%;

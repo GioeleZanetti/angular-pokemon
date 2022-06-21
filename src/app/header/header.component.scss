@@ -9,7 +9,7 @@ $default-header-height: 75px !default;
 	background-color: $default-color;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 
 	* {
 		padding: $default-space;

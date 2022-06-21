@@ -22,9 +22,9 @@ export class PokeballComponent {
 
 	public openDialog(): void {
 		const dialogConf = new MatDialogConfig();
-		dialogConf.height = '400px';
 		dialogConf.width = '50%';
-		dialogConf.enterAnimationDuration = '200';
+		dialogConf.enterAnimationDuration = '300ms';
+		dialogConf.exitAnimationDuration = '200ms'
 		this.dialog.open(PokedexComponent, dialogConf);
 	}
 

@@ -1,6 +1,6 @@
 <div id="search-component" class="search-component">
 	<input id="search-box" (input)="updateName()" autocomplete="off" #pokemonName>
-	<button type="button" (click)="redirectIfNotEmpty()">
-		<img src="assets/search.png">
+	<button mat-mini-fab color="primary" (click)="redirectIfNotEmpty()">
+		<mat-icon>search</mat-icon>
 	</button>
 </div>
