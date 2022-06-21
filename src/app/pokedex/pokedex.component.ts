@@ -25,9 +25,6 @@ export class PokedexComponent implements OnInit {
 	public releaseFromPokedex(pokemon: Pokemon): void {
 		this.pokedex.removeFromPokedex(pokemon);
 		this.pokemons = this.pokedex.getPokedex();
-		if (this.pokedex.getPokedexSize() === 0) {
-			//this.close()
-		}
 	}
 
 	public showDetailWindow(pokemon: Pokemon) {
