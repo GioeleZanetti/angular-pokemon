@@ -8,7 +8,7 @@ import { PokedexService } from './services/pokedex.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-	private title = 'pokemon';
+	title = 'pokemon';
 
 	constructor(private pokedex: PokedexService) {
 	}
