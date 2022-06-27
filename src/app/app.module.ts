@@ -15,6 +15,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
+import {EffectsModule} from "@ngrx/effects";
+import {PokemonEffects} from "./effects/pokemon.effects";
+import {pokemonReducer} from "./reducers/pokemon.reducer";
 
 @NgModule({
 	declarations: [
@@ -34,7 +38,9 @@ import { HomeComponent } from './home/home.component';
 		BrowserAnimationsModule,
 		MatDialogModule,
 		MatButtonModule,
-		MatIconModule
+		MatIconModule,
+		StoreModule.forRoot({/*pokemon: pokemonReducer*/}, {}),
+		EffectsModule.forRoot([PokemonEffects])
 	],
 	providers: [],
 	bootstrap: [AppComponent]

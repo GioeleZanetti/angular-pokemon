@@ -1,7 +1,9 @@
 import {Component, EventEmitter, HostListener, Output} from '@angular/core';
+import {Store} from "@ngrx/store";
 
 import {PokemonApiService} from '../services/pokemon-api.service';
 import {Pokemon} from '../models/Pokemon';
+import {searchPokemon, searchPokemonKey} from "../actions/pokemon-search.actions";
 
 @Component({
 	selector: 'app-pokemon-search',
@@ -10,7 +12,7 @@ import {Pokemon} from '../models/Pokemon';
 })
 export class PokemonSearchComponent {
 
-	@Output() emitter: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
+	//@Output() emitter: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
 	public pokemonName: string = "";
 
 
@@ -21,12 +23,15 @@ export class PokemonSearchComponent {
 		}
 	}
 
-	constructor(private api: PokemonApiService) { }
+	constructor(private store: Store<{ pokemon: Pokemon }>) { }
 
 	public search(): void {
 		if (this.pokemonName.trim() !== "") {
-			this.api.getPokemonByName(this.pokemonName.toLowerCase())
-				.subscribe((result: Pokemon) => this.emitter.emit(result));
+			this.store.dispatch(searchPokemon({name: this.pokemonName}));
+			console.log('Dispached')
+			/*this.api.getPokemonByName(this.pokemonName)
+				.subscribe((result: Pokemon) => this.emitter.emit(result)) ;*/
+			//klammern --> {[(...
 		}
 	}
 
