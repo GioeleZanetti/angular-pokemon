@@ -48,11 +48,12 @@ describe('PokemonApiService', () => {
 		}
 	);
 
-	it('should return not found if name is empty', (done: DoneFn) => {
+	it('should return not found if name is empty or wrong', (done: DoneFn) => {
 
 		service.getPokemonByName('').subscribe({
 			next: pokemon => {
 				expect(pokemon.id).toEqual(-1);
+				expect(pokemon.name).toEqual('No results for "Gilbert"');
 				done();
 			},
 			error: done.fail

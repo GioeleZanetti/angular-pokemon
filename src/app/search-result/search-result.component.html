@@ -1,10 +1,10 @@
 <div *ngIf="pokemon">
-	<div *ngIf="pokemon.id !== -1; else elseblock">
+	<div *ngIf="pokemon.id !== -1; else error">
 		<div class="table">
 			<div class="first-column">
 				<h1>{{pokemon.name | uppercase}}</h1>
 				<p>Id: {{pokemon.id}}</p>
-				<button mat-raised-button color="primary" routerLink="/pokemon/{{pokemon.name}}/details">
+				<button mat-raised-button color="primary" routerLink="/{{pokemon.name}}/details">
 					View Details
 				</button>
 			</div>
@@ -13,10 +13,9 @@
 			</div>
 		</div>
 	</div>
-	<ng-template #elseblock>
+	<ng-template #error>
 		<div class="error">
 			<h1>{{pokemon.name}}</h1>
 		</div>
 	</ng-template>
-
 </div>

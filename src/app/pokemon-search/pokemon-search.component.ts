@@ -1,6 +1,7 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {Component, EventEmitter, HostListener, Output} from '@angular/core';
 
-import { Router } from "@angular/router";
+import {PokemonApiService} from '../services/pokemon-api.service';
+import {Pokemon} from '../models/Pokemon';
 
 @Component({
 	selector: 'app-pokemon-search',
@@ -9,28 +10,28 @@ import { Router } from "@angular/router";
 })
 export class PokemonSearchComponent {
 
-	@ViewChild('pokemonName') pokemonNameElement?: ElementRef;
-	private pokemonName: string = "";
+	@Output() emitter: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
+	public pokemonName: string = "";
+
 
 	@HostListener('window:keyup', ['$event'])
 	keyEvent(event: KeyboardEvent){
 		if(event.key.toLowerCase() === "enter"){
-			this.redirectIfNotEmpty();
+			this.search();
 		}
 	}
 
-	constructor(private router: Router) { }
+	constructor(private api: PokemonApiService) { }
 
-	public redirectIfNotEmpty(): void {
+	public search(): void {
 		if (this.pokemonName.trim() !== "") {
-			this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {
-				this.router.navigate([`pokemon/${this.pokemonName.toLowerCase()}`]);
-			});
+			this.api.getPokemonByName(this.pokemonName.toLowerCase())
+				.subscribe((result: Pokemon) => this.emitter.emit(result));
 		}
 	}
 
-	public updateName(): void {
-		this.pokemonName = this.pokemonNameElement?.nativeElement.value;
+	public updateName(name: string): void {
+		this.pokemonName = name;
 	}
 
 }

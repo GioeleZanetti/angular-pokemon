@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
+import {PokemonDetailsComponent} from "./pokemon-details/pokemon-details.component";
 
 describe('AppComponent', () => {
 	beforeEach(async () => {
@@ -26,5 +27,12 @@ describe('AppComponent', () => {
 		const app = fixture.componentInstance;
 		expect(app.title).toEqual('pokemon');
 	});
+
+	it('should initialise pokedex when initialised', () => {
+		const fixture = TestBed.createComponent(PokemonDetailsComponent);
+		const app = fixture.componentInstance;
+		const spy = spyOn(app, 'ngOnInit');
+		expect(spy).toHaveBeenCalled();
+	})
 
 });

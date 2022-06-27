@@ -30,7 +30,7 @@ export class PokemonDetailsComponent implements OnInit {
 	}
 
 	public back(): void {
-		this.router.navigate([`pokemon/${this.pokemon?.name}`]);
+		this.router.navigate(['']);
 	}
 
 	public addToPokedex(): void {

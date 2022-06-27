@@ -3,8 +3,10 @@ $default-space: 2px !default;
 $default-margin: 10px;
 
 .search-component {
+	margin: $default-margin * 2;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 
 	button {
 		margin-left: $default-margin;

@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchResultComponent } from './search-result.component';
+import {ActivatedRoute} from "@angular/router";
 
 describe('SearchResultComponent', () => {
 	let component: SearchResultComponent;
 	let fixture: ComponentFixture<SearchResultComponent>;
 
 	beforeEach(async () => {
+
 		await TestBed.configureTestingModule({
 			declarations: [SearchResultComponent]
 		})

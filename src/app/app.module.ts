@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
 	declarations: [
@@ -23,7 +24,8 @@ import {MatIconModule} from "@angular/material/icon";
 		PokemonDetailsComponent,
 		PokeballComponent,
 		PokedexComponent,
-		HeaderComponent
+		HeaderComponent,
+  HomeComponent
 	],
 	imports: [
 		BrowserModule,

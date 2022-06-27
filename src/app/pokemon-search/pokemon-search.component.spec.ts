@@ -1,24 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
 import { PokemonSearchComponent } from './pokemon-search.component';
 import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {Router} from "@angular/router";
-import {of} from "rxjs";
+import {PokemonApiService} from "../services/pokemon-api.service";
 
 describe('PokemonSearchComponent', () => {
 	let component: PokemonSearchComponent;
 	let fixture: ComponentFixture<PokemonSearchComponent>;
-	const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [PokemonSearchComponent],
 			schemas: [NO_ERRORS_SCHEMA],
 			providers: [
-				{
-					provide: Router,
-					useValue: routerSpy
-				}
+				{provide: PokemonApiService}
 			]
 		})
 			.compileComponents();
@@ -41,7 +36,4 @@ describe('PokemonSearchComponent', () => {
 		expect(component['pokemonName']).toEqual(value);
 	});
 
-	it('should redirect when clicking icon', () => {
-		const spy = routerSpy.navigateByUrl as jasmine.Spy;
-	})
 });
