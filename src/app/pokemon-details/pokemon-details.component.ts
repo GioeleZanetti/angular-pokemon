@@ -12,7 +12,7 @@ import { PokedexService } from '../services/pokedex.service';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-	@Input() pokemon?: Pokemon;
+	public pokemon?: Pokemon;
 
 	constructor(
 		private pokedex: PokedexService,

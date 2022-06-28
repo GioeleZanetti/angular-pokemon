@@ -18,7 +18,7 @@ export class PokedexService {
 	}
 
 	public getPokemonByName(name: string): Pokemon {
-		const pokemonExists = this.available.find((pokemon: Pokemon) => pokemon.name === name);
+		const pokemonExists = this.available.find((pokemon: Pokemon) => pokemon.name.toLowerCase() === name.toLowerCase());
 		if(pokemonExists){
 			return pokemonExists
 		}else{

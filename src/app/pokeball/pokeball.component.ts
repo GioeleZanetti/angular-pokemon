@@ -1,5 +1,5 @@
-import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { PokedexService } from '../services/pokedex.service';
 import {PokedexComponent} from '../pokedex/pokedex.component';
@@ -12,11 +12,9 @@ import {PokedexComponent} from '../pokedex/pokedex.component';
 })
 export class PokeballComponent {
 
-	@ViewChild('pokedexContainer') pokedexContainer?: ElementRef;
 
 	constructor(
 		private pokedex: PokedexService,
-		private renderer: Renderer2,
 		public dialog: MatDialog
 	) { }
 
@@ -30,10 +28,6 @@ export class PokeballComponent {
 
 	public getPokedexSize(): number {
 		return this.pokedex.getPokedexSize();
-	}
-
-	public close(): void {
-		this.renderer.setStyle(this.pokedexContainer?.nativeElement, 'display', 'none');
 	}
 
 }

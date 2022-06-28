@@ -24,7 +24,6 @@ export class PokemonApiService {
 
 	private handleError(notFoundPokemon: Pokemon, name: string): (error: any)  => Observable<Pokemon> {
 		return (error: any): Observable<Pokemon> => {
-			notFoundPokemon.name = `No results for "${name}"`;
 			return of(notFoundPokemon);
 		};
 	}

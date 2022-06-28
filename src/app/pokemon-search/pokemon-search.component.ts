@@ -26,7 +26,9 @@ export class PokemonSearchComponent {
 	public search(): void {
 		if (this.pokemonName.trim() !== "") {
 			this.api.getPokemonByName(this.pokemonName.toLowerCase())
-				.subscribe((result: Pokemon) => this.emitter.emit(result));
+				.subscribe((result: Pokemon) => {
+					this.emitter.emit(result);
+				});
 		}
 	}
 

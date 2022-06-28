@@ -1,26 +1,34 @@
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { of } from 'rxjs';
 
 import { PokemonSearchComponent } from './pokemon-search.component';
-import {NO_ERRORS_SCHEMA} from "@angular/core";
-import {PokemonApiService} from "../services/pokemon-api.service";
+import { gilbert } from '../testing/pokemon-mocks';
+
 
 describe('PokemonSearchComponent', () => {
 	let component: PokemonSearchComponent;
 	let fixture: ComponentFixture<PokemonSearchComponent>;
+	let httpClient: jasmine.SpyObj<HttpClient>;
 
 	beforeEach(async () => {
+
+		httpClient = jasmine.createSpyObj('HttpClient', ['get']);
+
 		await TestBed.configureTestingModule({
 			declarations: [PokemonSearchComponent],
 			schemas: [NO_ERRORS_SCHEMA],
-			providers: [
-				{provide: PokemonApiService}
-			]
+			imports: [HttpClientTestingModule]
 		})
 			.compileComponents();
 
 		fixture = TestBed.createComponent(PokemonSearchComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
+
 	});
 
 	it('should create', () => {
@@ -35,5 +43,20 @@ describe('PokemonSearchComponent', () => {
 		fixture.detectChanges();
 		expect(component['pokemonName']).toEqual(value);
 	});
+
+	it('should emit search result', () => {
+		component.pokemonName = 'gilbert';
+		const spy = spyOn(component.emitter, 'emit');
+		spyOn(component['api'], 'getPokemonByName').and.returnValue(of(gilbert))
+		component.search();
+		expect(spy).toHaveBeenCalled();
+	})
+
+	it('should search when user clicks enter', () => {
+		const spy = spyOn(component, 'search');
+		window.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
+		fixture.detectChanges();
+		expect(spy).toHaveBeenCalled()
+	})
 
 });

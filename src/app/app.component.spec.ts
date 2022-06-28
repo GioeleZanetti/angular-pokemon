@@ -1,10 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import {PokemonDetailsComponent} from "./pokemon-details/pokemon-details.component";
 
 describe('AppComponent', () => {
+	let fixture: ComponentFixture<AppComponent>;
+	let app: AppComponent;
+
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
@@ -14,24 +17,21 @@ describe('AppComponent', () => {
 				AppComponent
 			],
 		}).compileComponents();
+		fixture = TestBed.createComponent(AppComponent);
+		app = fixture.componentInstance;
 	});
 
 	it('should create the app', () => {
-		const fixture = TestBed.createComponent(AppComponent);
-		const app = fixture.componentInstance;
 		expect(app).toBeTruthy();
 	});
 
 	it(`should have as title 'pokemon'`, () => {
-		const fixture = TestBed.createComponent(AppComponent);
-		const app = fixture.componentInstance;
 		expect(app.title).toEqual('pokemon');
 	});
 
 	it('should initialise pokedex when initialised', () => {
-		const fixture = TestBed.createComponent(PokemonDetailsComponent);
-		const app = fixture.componentInstance;
-		const spy = spyOn(app, 'ngOnInit');
+		const spy = spyOn(app['pokedex'], 'initialise');
+		app.ngOnInit()
 		expect(spy).toHaveBeenCalled();
 	})
 
