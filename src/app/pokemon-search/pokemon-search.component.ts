@@ -12,7 +12,6 @@ import {searchPokemon, searchPokemonKey} from "../actions/pokemon-search.actions
 })
 export class PokemonSearchComponent {
 
-	//@Output() emitter: EventEmitter<Pokemon> = new EventEmitter<Pokemon>();
 	public pokemonName: string = "";
 
 
@@ -28,10 +27,6 @@ export class PokemonSearchComponent {
 	public search(): void {
 		if (this.pokemonName.trim() !== "") {
 			this.store.dispatch(searchPokemon({name: this.pokemonName}));
-			console.log('Dispached')
-			/*this.api.getPokemonByName(this.pokemonName)
-				.subscribe((result: Pokemon) => this.emitter.emit(result)) ;*/
-			//klammern --> {[(...
 		}
 	}
 
