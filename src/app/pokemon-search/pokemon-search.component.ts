@@ -1,9 +1,8 @@
-import {Component, EventEmitter, HostListener, Output} from '@angular/core';
-import {Store} from "@ngrx/store";
+import { Component, HostListener } from '@angular/core';
+import { Store } from "@ngrx/store";
 
-import {PokemonApiService} from '../services/pokemon-api.service';
-import {Pokemon} from '../models/Pokemon';
-import {searchPokemon, searchPokemonKey} from "../actions/pokemon-search.actions";
+import { searchPokemon } from '../store/actions/pokemon-search.actions';
+import { PokemonState } from '../store/reducers/pokemon.reducer';
 
 @Component({
 	selector: 'app-pokemon-search',
@@ -22,11 +21,11 @@ export class PokemonSearchComponent {
 		}
 	}
 
-	constructor(private store: Store<{ pokemon: Pokemon }>) { }
+	constructor(private store: Store<PokemonState>) { }
 
 	public search(): void {
 		if (this.pokemonName.trim() !== "") {
-			this.store.dispatch(searchPokemon({name: this.pokemonName}));
+			this.store.dispatch(searchPokemon({name: this.pokemonName.toLowerCase()}));
 		}
 	}
 

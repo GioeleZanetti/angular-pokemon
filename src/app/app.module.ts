@@ -17,8 +17,10 @@ import {MatIconModule} from "@angular/material/icon";
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import {EffectsModule} from "@ngrx/effects";
-import {PokemonEffects} from "./effects/pokemon.effects";
-import {pokemonReducer} from "./reducers/pokemon.reducer";
+import {PokemonEffects} from "./store/effects/pokemon.effects";
+import {pokemonReducer} from "./store/reducers/pokemon.reducer";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -39,8 +41,9 @@ import {pokemonReducer} from "./reducers/pokemon.reducer";
 		MatDialogModule,
 		MatButtonModule,
 		MatIconModule,
-		StoreModule.forRoot({/*pokemon: pokemonReducer*/}, {}),
-		EffectsModule.forRoot([PokemonEffects])
+		StoreModule.forRoot({pokemon: pokemonReducer}, {}),
+		EffectsModule.forRoot([PokemonEffects]),
+		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 	],
 	providers: [],
 	bootstrap: [AppComponent]

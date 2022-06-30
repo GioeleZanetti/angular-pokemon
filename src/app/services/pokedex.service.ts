@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {notFoundPokemon, Pokemon} from '../models/Pokemon';
+import { notFoundPokemon, Pokemon } from '../models/Pokemon';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({

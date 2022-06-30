@@ -23,7 +23,7 @@ interface Artwork {
 
 export const notFoundPokemon: Pokemon = {
 	id: -1,
-	name: "",
+	name: "No Result Found",
 	base_experience: 0,
 	height: 0,
 	sprites: {

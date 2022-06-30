@@ -1,8 +1,10 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { PokedexService } from '../services/pokedex.service';
 import { Pokemon } from '../models/Pokemon';
-import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
 	selector: 'app-pokedex',
