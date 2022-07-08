@@ -1,21 +1,27 @@
 <div *ngIf="pokemon">
-	<div *ngIf="pokemon.id !== -1; else error">
-		<div class="table">
-			<div class="first-column">
-				<h1>{{pokemon.name | uppercase}}</h1>
-				<p>Id: {{pokemon.id}}</p>
-				<button mat-raised-button color="primary" routerLink="/{{pokemon.name}}/details">
-					View Details
-				</button>
-			</div>
-			<div class="second-column">
-				<img src="{{pokemon.sprites.other['official-artwork'].front_default}}">
-			</div>
+	<div class="table">
+		<div class="first-column">
+			<h1>{{ pokemon.name | uppercase }}</h1>
+			<p>Id: {{ pokemon.id }}</p>
+			<button
+				mat-raised-button
+				color="primary"
+				routerLink="/{{ pokemon.name }}/details"
+			>
+				View Details
+			</button>
+		</div>
+		<div class="second-column">
+			<img
+				src="{{
+					pokemon.sprites.other['official-artwork'].front_default
+				}}"
+			/>
 		</div>
 	</div>
-	<ng-template #error>
-		<div class="error">
-			<h1>{{pokemon.name}}</h1>
-		</div>
-	</ng-template>
+</div>
+<div *ngIf="error !== ''">
+	<div class="error">
+		<h1>{{ error }}</h1>
+	</div>
 </div>

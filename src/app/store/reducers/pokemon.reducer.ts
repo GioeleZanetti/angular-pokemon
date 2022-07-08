@@ -1,20 +1,35 @@
-import { createReducer, on } from '@ngrx/store';
-import { Pokemon} from '../../models/Pokemon';
+import { Action, createReducer, on } from '@ngrx/store';
+
+import { Pokemon } from '../../models/Pokemon';
 import {
 	pokemonSearchedSuccessfully,
 	pokemonSearchedUnsuccessfully,
-} from "../actions/pokemon-search.actions";
+} from '../actions/pokemon.actions';
 
 export interface PokemonState {
-	pokemon?: Pokemon
+	pokemon?: Pokemon;
+	error: string;
 }
 
-export  const initialState: PokemonState = {
-	pokemon: undefined
-}
+const initialState: PokemonState = {
+	pokemon: undefined,
+	error: '',
+};
 
 export const pokemonReducer = createReducer(
 	initialState,
-	on(pokemonSearchedSuccessfully, (state, {pokemon}) => ({pokemon})),
-	on(pokemonSearchedUnsuccessfully, (state, {pokemon}) => ({pokemon})),
-)
+	on(pokemonSearchedSuccessfully, (state, { pokemon }) => ({
+		...state,
+		pokemon: pokemon,
+		error: '',
+	})),
+	on(pokemonSearchedUnsuccessfully, (state, { error }) => ({
+		...state,
+		pokemon: undefined,
+		error: error,
+	}))
+);
+
+export function reducer(state: PokemonState, action: Action) {
+	return pokemonReducer(state, action);
+}

@@ -1,8 +1,8 @@
-import {Pokemon} from '../models/Pokemon';
+import { Pokemon } from '../models/Pokemon';
 
 export const gilbert: Pokemon = {
 	id: 1,
-	name: "gilbert",
+	name: 'gilbert',
 	base_experience: 222,
 	height: 255,
 	weight: 255,
@@ -10,9 +10,9 @@ export const gilbert: Pokemon = {
 	sprites: {
 		front_default: '',
 		other: {
-			"official-artwork": {
-				front_default: ''
-			}
-		}
-	}
+			'official-artwork': {
+				front_default: '',
+			},
+		},
+	},
 };

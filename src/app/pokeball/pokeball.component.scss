@@ -1,7 +1,6 @@
 $img-size: 40px !default;
 
 .pokeball-container {
-
 	display: inline-flex;
 	align-items: flex-end;
 	cursor: pointer;
@@ -10,5 +9,4 @@ $img-size: 40px !default;
 		height: $img-size;
 		width: $img-size;
 	}
-
 }

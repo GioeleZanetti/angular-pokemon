@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PokedexService } from './services/pokedex.service';
+import { AvailableService } from './services/available.service';
 
 @Component({
 	selector: 'app-root',
@@ -10,10 +11,13 @@ import { PokedexService } from './services/pokedex.service';
 export class AppComponent implements OnInit {
 	title = 'pokemon';
 
-	constructor(private pokedex: PokedexService) {
-	}
+	constructor(
+		private pokedex: PokedexService,
+		private available: AvailableService
+	) { }
 
 	public ngOnInit(): void {
 		this.pokedex.initialise();
+		this.available.initialise();
 	}
 }

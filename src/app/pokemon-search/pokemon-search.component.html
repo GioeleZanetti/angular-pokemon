@@ -1,5 +1,10 @@
 <div id="search-component" class="search-component">
-	<input id="search-box" (input)="updateName(pokemonName.value)" autocomplete="off" #pokemonName>
+	<input
+		id="search-box"
+		(input)="updateName(pokemonName.value)"
+		autocomplete="off"
+		#pokemonName
+	/>
 	<button mat-mini-fab color="primary" (click)="search()">
 		<mat-icon>search</mat-icon>
 	</button>

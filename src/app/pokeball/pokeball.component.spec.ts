@@ -1,28 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { PokeballComponent } from './pokeball.component';
-import {of} from "rxjs";
 
 describe('PokeballComponent', () => {
 	let component: PokeballComponent;
 	let fixture: ComponentFixture<PokeballComponent>;
 	let mockDialog = {
-		open: ({}: any) => {
-
-		}
+		open: ({}: any) => {},
 	};
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [PokeballComponent],
 			imports: [MatDialogModule],
-			providers: [
-				{ provide: MatDialog, useValue: mockDialog}
-			]
-		})
-			.compileComponents();
+			providers: [{ provide: MatDialog, useValue: mockDialog }],
+		}).compileComponents();
 
 		fixture = TestBed.createComponent(PokeballComponent);
 		component = fixture.componentInstance;
@@ -37,6 +30,5 @@ describe('PokeballComponent', () => {
 		const spy = spyOn(component.dialog, 'open');
 		component.openDialog();
 		expect(spy).toHaveBeenCalled();
-	})
-
+	});
 });

@@ -5,13 +5,13 @@ $default-font-size: 20px !default;
 $default-header-height: 75px !default;
 
 .header {
-	height: $default-header-height;
-	background-color: $default-color;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+  height: $default-header-height;
+  background-color: $default-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
-	* {
-		padding: $default-space;
-	}
+  * {
+    padding: $default-space;
+  }
 }

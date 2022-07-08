@@ -8,7 +8,7 @@ describe('LocalStorageService', () => {
 	const mockArray: Pokemon[] = [
 		{
 			id: 1,
-			name: "Gilbert",
+			name: 'Gilbert',
 			base_experience: 222,
 			height: 255,
 			weight: 255,
@@ -16,11 +16,11 @@ describe('LocalStorageService', () => {
 			sprites: {
 				front_default: '',
 				other: {
-					"official-artwork": {
-						front_default: ''
-					}
-				}
-			}
+					'official-artwork': {
+						front_default: '',
+					},
+				},
+			},
 		},
 	];
 
@@ -36,7 +36,9 @@ describe('LocalStorageService', () => {
 	it('should save an array with a certain key', () => {
 		const key: string = 'setTest';
 		service.saveArray(key, mockArray);
-		const retrieved: Pokemon[] = JSON.parse(String(localStorage.getItem(key)));
+		const retrieved: Pokemon[] = JSON.parse(
+			String(localStorage.getItem(key))
+		);
 		expect(retrieved).toEqual(mockArray);
 	});
 

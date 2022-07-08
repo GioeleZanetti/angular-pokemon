@@ -14,26 +14,26 @@ $img-size: 200px !default;
 	grid-column: 1;
 	grid-row: 1;
 
-	h1{
+	h1 {
 		font-size: $title-font-size;
 	}
 
-	p{
+	p {
 		font-size: $content-font-size;
 	}
 
-	.content{
+	.content {
 		display: flex;
 		align-items: center;
 		flex-flow: column wrap;
 
-		*{
+		* {
 			margin: $content-margin;
 		}
 	}
 }
 
-img{
+img {
 	width: $img-size;
 	height: $img-size;
 }
