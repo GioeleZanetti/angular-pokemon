@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
+import { gilbert } from '../testing/pokemon-mocks';
 import { PokeballComponent } from './pokeball.component';
 
 describe('PokeballComponent', () => {
@@ -30,5 +31,10 @@ describe('PokeballComponent', () => {
 		const spy = spyOn(component.dialog, 'open');
 		component.openDialog();
 		expect(spy).toHaveBeenCalled();
+	});
+
+	it('should return pokedex size', () => {
+		component['pokedex']['pokedex'] = [gilbert];
+		expect(component.getPokedexSize()).toEqual(1);
 	});
 });

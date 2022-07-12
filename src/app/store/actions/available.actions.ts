@@ -15,6 +15,13 @@ export const pokemonReturnedSuccessfully = createAction(
 	props<{ pokemon: Pokemon }>()
 );
 
+export const pokemonReturnedUnsuccessfullyKey =
+	'[Available] Pokemon Returned Unsuccessfully';
+export const pokemonReturnedUnsuccessfully = createAction(
+	pokemonReturnedUnsuccessfullyKey,
+	props<{ error: string }>()
+);
+
 export const addPokemonToAvailableKey = '[Available] Add Pokemon To Available';
 export const addPokemonToAvailable = createAction(
 	addPokemonToAvailableKey,

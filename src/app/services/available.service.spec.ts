@@ -36,17 +36,21 @@ describe('AvailableService', () => {
 			});
 	});
 
-	it("should return notFoundPokemon if pokemon isn't present", () => {
-		service
-			.getPokemonByNameObservable('asdsa')
-			.subscribe((result: Pokemon) => {
-				expect(result).toEqual(notFoundPokemon);
-			});
+	it("should return an error if pokemon isn't present", () => {
+		expect(function () {
+			service.getPokemonByNameObservable('sdad');
+		}).toThrow(new Error('No Results For sdad'));
 	});
 
 	it('should set in_pokedex_attribute to a certain state', () => {
 		service['available'] = [gilbert];
 		service.setInPokedex(gilbert, true);
 		expect(service['available'][0].is_in_pokedex).toBeTrue();
+	});
+
+	it('should initialise array if something in local storage is present', () => {
+		service['storage'].saveArray('available', [gilbert]);
+		service.initialise();
+		expect(service['available']).toEqual([gilbert]);
 	});
 });

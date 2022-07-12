@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { exhaustMap, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { AvailableService } from '../../services/available.service';
 import {
@@ -10,6 +10,7 @@ import {
 	getPokemonByName,
 	pokemonAddeddSuccessfully,
 	pokemonReturnedSuccessfully,
+	pokemonReturnedUnsuccessfully,
 	setPokemonInPokedex,
 	settedPokemonInPokedex,
 } from '../actions/available.actions';
@@ -21,13 +22,18 @@ export class AvailableEffects {
 		this.actions$.pipe(
 			ofType(getPokemonByName),
 			exhaustMap((action) =>
-				this.available
-					.getPokemonByNameObservable(action.name)
-					.pipe(
-						map((pokemon: Pokemon) =>
-							pokemonReturnedSuccessfully({ pokemon })
-						)
-					)
+				this.available.getPokemonByNameObservable(action.name).pipe(
+					map((pokemon: Pokemon) =>
+						pokemonReturnedSuccessfully({ pokemon })
+					),
+					catchError(() => {
+						return of(
+							pokemonReturnedUnsuccessfully({
+								error: `No Results For ${action.name}`,
+							})
+						);
+					})
+				)
 			)
 		)
 	);

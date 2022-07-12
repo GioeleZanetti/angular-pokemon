@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+	ComponentFixture,
+	fakeAsync,
+	TestBed,
+	tick,
+} from '@angular/core/testing';
 
 import { provideMockStore } from '@ngrx/store/testing';
 
@@ -23,5 +28,11 @@ describe('SearchResultComponent', () => {
 
 	it('should create', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should subscribe to properties pokemon and error', () => {
+		component.ngOnInit();
+		expect(component.pokemon).toEqual(initialState.pokemonState.pokemon);
+		expect(component.error).toEqual(initialState.pokemonState.error);
 	});
 });

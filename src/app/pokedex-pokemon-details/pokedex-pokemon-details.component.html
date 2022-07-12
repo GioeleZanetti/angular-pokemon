@@ -1,0 +1,20 @@
+<div *ngIf="pokemon" class="container">
+	<div class="pokemon-list-item">
+		<p>{{ pokemon.name }}</p>
+		<img src="{{ pokemon.sprites.front_default }}" (click)="toggle()" />
+		<img
+			src="assets/freile.png"
+			alt="Remove From Pokedex"
+			class="icon"
+			(click)="releaseFromPokedex(pokemon)"
+		/>
+	</div>
+	<div *ngIf="detailsVisible">
+		<div class="pokemon-details">
+			<p>Id: {{ pokemon.id }}</p>
+			<p>Height: {{ pokemon.height }}</p>
+			<p>Weight: {{ pokemon.weight }}</p>
+			<p>Base experience: {{ pokemon.base_experience }}</p>
+		</div>
+	</div>
+</div>

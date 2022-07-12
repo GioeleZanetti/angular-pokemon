@@ -30,20 +30,6 @@ export class PokedexComponent implements OnInit {
 		this.pokedexStore.dispatch(loadPokedex());
 	}
 
-	public releaseFromPokedex(pokemon: Pokemon): void {
-		this.pokedexStore.dispatch(removePokemon({ pokemon }));
-		this.pokedexStore.dispatch(setPokemonInPokedex({ pokemon: pokemon, state: false}))
-	}
-
-	public showDetailWindow(pokemon: Pokemon): void {
-		const pokemonDetails = document.getElementById(
-			pokemon.name + 'Details'
-		);
-		if (pokemonDetails) {
-			pokemonDetails.style.display = 'flex';
-		}
-	}
-
 	public close(): void {
 		this.dialogRef.close();
 	}

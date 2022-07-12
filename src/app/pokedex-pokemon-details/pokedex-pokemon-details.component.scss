@@ -1,0 +1,27 @@
+$icon-size: 50px !default;
+
+* {
+	box-sizing: border-box;
+	padding: 10px;
+}
+
+img {
+	cursor: pointer;
+}
+
+.pokemon-list-item {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon {
+	width: $icon-size;
+	height: $icon-size;
+	cursor: pointer;
+}
+
+.pokemon-details p {
+	text-align: center;
+}

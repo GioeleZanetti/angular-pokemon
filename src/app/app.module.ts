@@ -26,6 +26,7 @@ import { pokedexReducer } from './store/reducers/pokedex.reducer';
 import { PokedexEffects } from './store/effects/pokedex.effects';
 import { AvailableEffects } from './store/effects/available.effects';
 import { availableReducer } from './store/reducers/available.reducer';
+import { PokedexPokemonDetailsComponent } from './pokedex-pokemon-details/pokedex-pokemon-details.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import { availableReducer } from './store/reducers/available.reducer';
 		PokedexComponent,
 		HeaderComponent,
 		HomeComponent,
+  PokedexPokemonDetailsComponent,
 	],
 	imports: [
 		BrowserModule,

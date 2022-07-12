@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { select, Store } from '@ngrx/store';
 import { combineLatestWith, Observable } from 'rxjs';
@@ -16,12 +16,16 @@ import { AvailableState } from '../store/reducers/available.reducer';
 	styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent implements OnInit {
-	public pokemon$: Observable<Pokemon | undefined> = this.pokemonStore.pipe(
-		select(getPokemon)
-	);
-	public error$: Observable<string> = this.pokemonStore.pipe(
-		select(getError)
-	);
+	private pokemon$ = this.pokemonStore
+		.pipe(select(getPokemon))
+		.subscribe((result: Pokemon | undefined) => {
+			this.pokemon = result;
+		});
+	private error$ = this.pokemonStore
+		.pipe(select(getError))
+		.subscribe((result: string) => {
+			this.error = result;
+		});
 	public pokemon?: Pokemon;
 	public error: string = '';
 
@@ -31,20 +35,10 @@ export class SearchResultComponent implements OnInit {
 	) {}
 
 	public ngOnInit(): void {
-		this.pokemon$
-			.pipe(
-				combineLatestWith(this.error$),
-				map(([pokemon, error]): PokemonState => {
-					return { pokemon: pokemon, error: error };
-				})
-			)
-			.subscribe((result: PokemonState) => {
-				this.pokemon = result.pokemon;
-				this.error = result.error;
-				if (result.pokemon)
-					this.availableStore.dispatch(
-						addPokemonToAvailable({ pokemon: result.pokemon })
-					);
-			});
+		this.pokemon$.add(this.error$);
+	}
+
+	public ngOnDestroy(): void {
+		this.pokemon$.unsubscribe();
 	}
 }

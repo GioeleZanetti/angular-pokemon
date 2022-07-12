@@ -13,6 +13,7 @@ import {
 	getPokemonByName,
 	pokemonAddeddSuccessfully,
 	pokemonReturnedSuccessfully,
+	pokemonReturnedUnsuccessfully,
 	setPokemonInPokedex,
 	settedPokemonInPokedex,
 } from '../actions/available.actions';
@@ -53,6 +54,22 @@ describe('AvailableEffects', () => {
 		testScheduler.run(({ hot, cold, expectObservable }) => {
 			actions = hot('-a', { a: action });
 			const response = cold('-b|', { b: gilbert });
+			service.getPokemonByNameObservable.and.returnValue(response);
+			expectObservable(effects.getPokemonByName$).toBe('--b', {
+				b: outcome,
+			});
+		});
+	});
+
+	it('should return pokemonReturnedUnsuccessfully on getPokemonByName if error occurs', () => {
+		const error = 'No Results For gilbert';
+		const action = getPokemonByName({ name: 'gilbert' });
+		const outcome = pokemonReturnedUnsuccessfully({
+			error: error,
+		});
+		testScheduler.run(({ hot, cold, expectObservable }) => {
+			actions = hot('-a', { a: action });
+			const response = cold('-#|', {}, error);
 			service.getPokemonByNameObservable.and.returnValue(response);
 			expectObservable(effects.getPokemonByName$).toBe('--b', {
 				b: outcome,

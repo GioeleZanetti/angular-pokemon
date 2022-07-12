@@ -1,25 +1,9 @@
 <h2 mat-dialog-title>Pokedex</h2>
 <mat-dialog-content>
 	<div *ngFor="let pokemon of pokemons$ | async">
-		<div class="pokemon-list-item">
-			<p>{{ pokemon.name }}</p>
-			<img
-				src="{{ pokemon.sprites.front_default }}"
-				(click)="showDetailWindow(pokemon)"
-			/>
-			<img
-				src="assets/freile.png"
-				alt="Remove From Pokedex"
-				class="icon"
-				(click)="releaseFromPokedex(pokemon)"
-			/>
-		</div>
-		<div class="pokemon-details" id="{{ pokemon.name }}Details">
-			<p>Id: {{ pokemon.id }}</p>
-			<p>Height: {{ pokemon.height }}</p>
-			<p>Weight: {{ pokemon.weight }}</p>
-			<p>Base experience: {{ pokemon.base_experience }}</p>
-		</div>
+		<app-pokedex-pokemon-details
+			[pokemon]="pokemon"
+		></app-pokedex-pokemon-details>
 	</div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -37,9 +37,7 @@ export class AvailableService {
 		if (pokemonExistsInAvailable) {
 			return of(pokemonExistsInAvailable);
 		} else {
-			const notFound: Pokemon = notFoundPokemon;
-			notFound.name = `No result for "${name}"`;
-			return of(notFound);
+			throw new Error(`No Results For ${name}`);
 		}
 	}
 
